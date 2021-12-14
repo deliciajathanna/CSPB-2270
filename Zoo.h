@@ -1,5 +1,5 @@
-#ifndef Zoo_H__
-#define Zoo_H__
+#ifndef FinalProject_H__
+#define FinalProject_H__
 
 #include <string>
 #include <memory>
@@ -12,7 +12,7 @@ using namespace std;
 struct Animal {
   string name; // name of the animal
   int age; // age of the entered animal 
-  shared_ptr<Animal> next; // points to the next animal or returns NULL if there are no more
+  shared_ptr<Animal> next; // points to the next animal in the list or returns NULL if there are no more
 };
 
 class Zoo{
@@ -30,27 +30,32 @@ public:
   // name and the age, and then go repeat the process till the user
   // is finished. 
 
-
   void EnterAnimalType (int type);
 
-  // This function specifically inserts lions.
-  // We don't need an offset because they list will be
-  // empty, thus any animals entered will be new.
+  // This functions will add animals to their specific
+  // linked list. We don't need an offset because the 
+  // list will be empty, thus any animals entered will be new.
 
-  void InsertLion(string name, int age);
+  void InsertAnimal(string name, int age);
 
-  // This function will append the animal to the list, we will
-  // then call a sort function in order to sort the animal
-  // into the correct place based on the type of animal
+  // This function will remove animals from their 
+  // specific linked lists.
 
-  void Append(shared_ptr<Animal> new_animal);
+  void RemoveAnimal(string name);
 
+  // Funtion to get the head or top of every list
+
+  shared_ptr<Animal> GetTop();
+
+  // This will display all linked lists
+
+  void DisplayAnimal(shared_ptr<Animal> head);
 
 
 
 private:
-  shared_ptr<Animal> head; // head of the list
-  shared_ptr<Animal> tail; // tail of the list
+  shared_ptr<Animal> head; // head or top of the list
+  shared_ptr<Animal> tail; // tail or end of the list
 };
 
 #endif // Zoo_H__
